@@ -3,164 +3,325 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio Pedro De Colla</title>
+    <title>Portfólio | Pedro De Colla</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        /* --- Configurações Gerais e Variáveis de Cores --- */
+        /* --- Variáveis e Reset --- */
         :root {
-            --bg-color: #0d1117; /* Fundo estilo GitHub Dark */
-            --text-color: #c9d1d9;
-            --accent-color: #2ea44f; /* Verde GitHub */
+            --bg-color: #0a0c10;
             --card-bg: #161b22;
-            --border-color: #30363d;
+            --text-main: #e6edf3;
+            --text-muted: #7d8590;
+            --border: #30363d;
+            /* Gradiente RGB Principal */
+            --gradient-main: linear-gradient(135deg, #2ea44f, #58a6ff, #a371f7);
+            --glow: 0 0 20px rgba(88, 166, 255, 0.15);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', -apple-system, sans-serif;
             background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
+            color: var(--text-main);
+            overflow-x: hidden;
         }
 
-        a { text-decoration: none; color: #58a6ff; transition: 0.2s; }
-        a:hover { text-decoration: underline; }
+        /* --- Navbar Glassmorphism --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(13, 17, 23, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
 
+        .logo { font-weight: bold; font-size: 1.2rem; letter-spacing: 1px; }
+        .logo span { color: #58a6ff; }
+
+        .nav-links a {
+            margin-left: 20px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .nav-links a:hover { color: #58a6ff; }
+
+        /* --- Container Principal --- */
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 20px;
         }
 
-        /* --- Cabeçalho (Hero Section) --- */
+        /* --- Hero Section (Cabeçalho) --- */
         header {
-            text-align: center;
-            padding: 80px 20px;
-            border-bottom: 1px solid var(--border-color);
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 60px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        /* Foto de Perfil com Borda RGB */
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 25px;
+            border: 3px solid transparent;
+            background-image: linear-gradient(var(--card-bg), var(--card-bg)), var(--gradient-main);
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            /* Tenta pegar a foto do GitHub. Se falhar, fica um círculo cinza */
+            background-image: url('https://github.com/decolla.png'), linear-gradient(var(--card-bg), var(--card-bg));
+            background-size: cover;
+            box-shadow: var(--glow);
         }
 
         header h1 {
-            font-size: 2.5rem;
-            color: #ffffff;
-            margin-bottom: 10px;
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         header .subtitle {
-            font-size: 1.2rem;
-            color: #8b949e;
-            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
         }
 
+        .social-links { margin-top: 20px; }
         .social-links a {
-            margin: 0 10px;
-            font-weight: bold;
-            color: var(--text-color);
-            border: 1px solid var(--border-color);
-            padding: 8px 16px;
-            border-radius: 6px;
-            background-color: var(--card-bg);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            margin-right: 15px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            font-size: 1.2rem;
+            transition: 0.3s;
+            text-decoration: none;
         }
         .social-links a:hover {
-            border-color: #8b949e;
-            background-color: #21262d;
-            text-decoration: none;
+            transform: translateY(-3px);
+            border-color: #58a6ff;
+            background: #1f242c;
+            box-shadow: 0 0 15px rgba(88, 166, 255, 0.3);
         }
 
         /* --- Seções Gerais --- */
-        section { padding: 60px 0; border-bottom: 1px solid var(--border-color); }
+        section { padding: 80px 0; border-bottom: 1px solid var(--border); }
         section:last-child { border-bottom: none; }
 
         h2 {
-            font-size: 1.8rem;
-            color: #ffffff;
-            margin-bottom: 30px;
-            border-left: 5px solid var(--accent-color);
-            padding-left: 15px;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            display: inline-block;
+            position: relative;
+        }
+        /* Detalhe sublinhado RGB no título */
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--gradient-main);
+            margin-top: 8px;
+            border-radius: 2px;
         }
 
-        /* --- Grid de Projetos --- */
+        p { color: #8b949e; line-height: 1.8; font-size: 1.05rem; }
+
+        /* --- Nova Seção: Timeline/Educação --- */
+        .timeline-item {
+            border-left: 2px solid #30363d;
+            padding-left: 20px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .timeline-item::before {
+            content: '';
+            width: 12px;
+            height: 12px;
+            background: #58a6ff;
+            position: absolute;
+            left: -7px;
+            top: 5px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #58a6ff;
+        }
+        .timeline-date { font-size: 0.85rem; color: #58a6ff; font-weight: bold; margin-bottom: 5px; display: block; }
+        .timeline-title { color: #fff; font-size: 1.1rem; margin-bottom: 5px; }
+
+        /* --- Cards de Projetos --- */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
         }
 
         .project-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 20px;
-            transition: transform 0.2s;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
         }
 
-        .project-card:hover { transform: translateY(-5px); border-color: #8b949e; }
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: #58a6ff;
+            box-shadow: var(--glow);
+        }
 
-        .project-card h3 { color: #ffffff; margin-bottom: 10px; }
-        .project-card p { font-size: 0.9rem; margin-bottom: 15px; color: #8b949e; }
+        .project-card h3 { color: #fff; margin-bottom: 10px; font-size: 1.3rem; }
+
+        .tech-stack { margin-top: 15px; margin-bottom: 20px; }
 
         .tech-tag {
             display: inline-block;
             font-size: 0.75rem;
-            background: #21262d;
+            background: rgba(56, 139, 253, 0.1);
             color: #58a6ff;
-            padding: 2px 8px;
-            border-radius: 12px;
-            margin-right: 5px;
-            margin-bottom: 5px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-right: 6px;
+            margin-bottom: 6px;
+            border: 1px solid rgba(56, 139, 253, 0.2);
         }
 
-        /* --- Lista de Habilidades --- */
-        .skills-list {
-            list-style: none;
+        .btn-link {
+            display: inline-block;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .btn-link:hover { color: #58a6ff; }
+        .btn-link i { margin-left: 5px; font-size: 0.8rem; }
+
+        /* --- Skills --- */
+        .skills-container {
             display: flex;
             flex-wrap: wrap;
             gap: 15px;
         }
-
-        .skills-list li {
-            background-color: rgba(46, 164, 79, 0.1);
-            color: var(--accent-color);
-            border: 1px solid var(--accent-color);
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-weight: bold;
+        .skill-box {
+            background: #21262d;
+            border: 1px solid var(--border);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            color: var(--text-main);
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .skill-box:hover {
+            background: #30363d;
+            border-color: #58a6ff;
+            color: #fff;
+            transform: scale(1.05);
         }
 
         /* --- Footer --- */
         footer {
             text-align: center;
-            padding: 40px;
+            padding: 50px 0;
+            color: var(--text-muted);
             font-size: 0.9rem;
-            color: #484f58;
+            border-top: 1px solid var(--border);
+            background: #0d1117;
+        }
+
+        /* --- Responsividade --- */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5rem; }
+            nav { justify-content: center; }
+            .nav-links { display: none; } /* Esconde links no mobile p/ simplificar */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
 
+<nav>
+    <div class="logo">&lt;Pedro<span style="color:#2ea44f">/</span>Dev&gt;</div>
+    <div class="nav-links">
+        <a href="#about">Sobre</a>
+        <a href="#education">Formação</a>
+        <a href="#projects">Projetos</a>
+        <a href="#skills">Skills</a>
+    </div>
+</nav>
+
 <div class="container">
     <header>
+        <div class="profile-pic" style="background-image: url('https://github.com/decolla.png');"></div>
+
         <h1>Pedro De Colla Varise</h1>
-        <p class="subtitle">Estudante de Ciência da Computação | UFU </p>
+        <p class="subtitle">Estudante de Ciência da Computação | UFU</p>
 
         <div class="social-links">
-            <a href="https://github.com/decolla" target="_blank">GitHub</a>
-            <a href="https://linkedin.com/in/pedro-de-colla/" target="_blank">LinkedIn</a>
-            <a href="mailto:pedro.varise@gmail.com">Email</a>
+            <a href="https://github.com/decolla" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/pedro-de-colla/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="mailto:pedro.varise@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
         </div>
     </header>
 
     <section id="about">
         <h2>Sobre Mim</h2>
         <p>
-            Olá! Sou um estudante de computação apaixonado por tecnologia.
-            Atualmente estou focado em aprofundar meus conhecimentos em programação, engenharia de dados,
-            desenvolvimento web e backend.
+            Olá! Sou um estudante de computação apaixonado por resolver problemas complexos através de código.
+            Atualmente, meu foco está na engenharia de software robusta, explorando o ecossistema de
+            <strong style="color:#e6edf3">Engenharia de Dados e Backend</strong>.
         </p>
         <br>
         <p>
-            Gosto de trabalhar em projetos que despertam meu interesse e busco oportunidades
-            para aplicar o que aprendo na universidade em cenários do mundo real.
+            Na UFU, busco não apenas passar nas matérias, mas entender profundamente como os sistemas funcionam "por baixo do capô",
+            desde a manipulação de bits em C até arquiteturas distribuídas com Kafka.
         </p>
+    </section>
+
+    <section id="education">
+        <h2>Jornada & Formação</h2>
+
+        <div class="timeline-item">
+            <span class="timeline-date">2026 (Atual)</span>
+            <h3 class="timeline-title">Estagiário em Desenvolvimento / Dados</h3>
+            <p>Aplicando conhecimentos em cenários reais, focando em ksqlDB, alarmes de sistema e infraestrutura de dados.</p>
+        </div>
+
+        <div class="timeline-item">
+            <span class="timeline-date">2022 - Presente</span>
+            <h3 class="timeline-title">Bacharelado em Ciência da Computação - UFU</h3>
+            <p>Monitoria em Programação Funcional. Foco em Algoritmos, Estruturas de Dados e Sistemas Distribuídos.</p>
+        </div>
     </section>
 
     <section id="projects">
@@ -169,52 +330,71 @@
 
             <div class="project-card">
                 <h3>Site Locadora</h3>
-                <p>Projeto full-stack para criação de um sistema de locadora web</p>
-                <span class="tech-tag">Angular</span>
-                <span class="tech-tag">C#</span>
-                <span class="tech-tag">MongoDB</span>
-                <span class="tech-tag">Docker</span>
-                <span class="tech-tag">HTML & CSS</span>
-                <br><br>
-                <a href="https://github.com/decolla/Projeto-Locadora">Ver no GitHub →</a>
+                <p>Sistema completo full-stack para gestão de locadora, demonstrando arquitetura em camadas e conteinerização.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">C# .NET</span>
+                    <span class="tech-tag">Angular</span>
+                    <span class="tech-tag">MongoDB</span>
+                    <span class="tech-tag">Docker</span>
+                </div>
+                <a href="https://github.com/decolla/Projeto-Locadora" class="btn-link" target="_blank">
+                    Ver no GitHub <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
 
             <div class="project-card">
                 <h3>Masterizando Kafka</h3>
-                <p>Projeto que simula cenário de fluxo de dados, aprimorando manipulação dados em Apache Kafka.</p>
-                <span class="tech-tag">Apache Kafka</span>
-                <span class="tech-tag">.NET (C#)</span>
-                <span class="tech-tag">ksqlDB</span>
-                <br><br>
-                <a href="https://github.com/decolla/Masterizando-Kafka">Ver no GitHub →</a>
+                <p>Simulação avançada de fluxo de dados (Data Streaming). Foco em processamento em tempo real e ksqlDB.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Apache Kafka</span>
+                    <span class="tech-tag">.NET</span>
+                    <span class="tech-tag">ksqlDB</span>
+                    <span class="tech-tag">Engenharia de Dados</span>
+                </div>
+                <a href="https://github.com/decolla/Masterizando-Kafka" class="btn-link" target="_blank">
+                    Ver no GitHub <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="project-card">
+                <h3>Algoritmos & Estruturas</h3>
+                <p>Repositório de estudos acadêmicos focados em performance, grafos e lógica avançada.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">C++</span>
+                    <span class="tech-tag">Haskell</span>
+                    <span class="tech-tag">Python</span>
+                </div>
+                <a href="https://github.com/decolla" class="btn-link" target="_blank">
+                    Ver Repositórios <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
 
         </div>
     </section>
 
     <section id="skills">
-        <h2>Tecnologias & Ferramentas</h2>
-        <ul class="skills-list">
-            <li>Java</li>
-            <li>C#</li>
-            <li>Python</li>
-            <li>Git/GitHub</li>
-            <li>HTML & CSS</li>
-            <li>C++</li>
-            <li>MongoDB</li>
-            <li>Kafka</li>
-            <li>SQL</li>
-            <li>Angular</li>
-            <li>Haskell</li>
-            <li>Docker</li>
-            <li>Linux</li>
-        </ul>
+        <h2>Tech Stack</h2>
+        <div class="skills-container">
+            <div class="skill-box"><i class="fab fa-java"></i> Java</div>
+            <div class="skill-box"><i class="fas fa-code"></i> C# / .NET</div>
+            <div class="skill-box"><i class="fab fa-python"></i> Python</div>
+            <div class="skill-box"><i class="fas fa-terminal"></i> C / C++</div>
+            <div class="skill-box"><i class="fas fa-wave-square"></i> Haskell</div>
+
+            <div class="skill-box"><i class="fas fa-database"></i> SQL</div>
+            <div class="skill-box"><i class="fas fa-leaf"></i> MongoDB</div>
+            <div class="skill-box"><i class="fab fa-docker"></i> Docker</div>
+            <div class="skill-box"><i class="fas fa-project-diagram"></i> Kafka</div>
+            <div class="skill-box"><i class="fab fa-linux"></i> Linux</div>
+        </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Pedro de Colla. Feito com HTML e CSS.</p>
+        <p>&copy; 2026 Pedro De Colla. Developed with <i class="fas fa-heart" style="color:#2ea44f"></i> and Code.</p>
+        <div style="margin-top: 10px;">
+            <a href="https://github.com/decolla" style="color: #58a6ff; text-decoration: none;">github.com/decolla</a>
+        </div>
     </footer>
 </div>
-
 </body>
 </html>
