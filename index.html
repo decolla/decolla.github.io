@@ -14,7 +14,7 @@
             --text-main: #e6edf3;
             --text-muted: #7d8590;
             --border: #30363d;
-            /* Gradiente RGB Principal */
+            /* RGB BRABOOOOOOOOOO */
             --gradient-main: linear-gradient(135deg, #2ea44f, #58a6ff, #a371f7);
             --glow: 0 0 20px rgba(88, 166, 255, 0.15);
         }
@@ -28,7 +28,7 @@
             overflow-x: hidden;
         }
 
-        /* --- Navbar Glassmorphism --- */
+        /*Navbar*/
         nav {
             position: fixed;
             top: 0;
@@ -55,14 +55,14 @@
         }
         .nav-links a:hover { color: #58a6ff; }
 
-        /* --- Container Principal --- */
+        /* Principal */
         .container {
             max-width: 1000px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* --- Hero Section (Cabeçalho) --- */
+        /* cabeçalho */
         header {
             min-height: 90vh;
             display: flex;
@@ -73,7 +73,7 @@
             animation: fadeIn 1s ease-in;
         }
 
-        /* Foto de Perfil com Borda RGB */
+        /* Foto perfil */
         .profile-pic {
             width: 150px;
             height: 150px;
@@ -83,7 +83,7 @@
             background-image: linear-gradient(var(--card-bg), var(--card-bg)), var(--gradient-main);
             background-origin: border-box;
             background-clip: content-box, border-box;
-            /* Tenta pegar a foto do GitHub. Se falhar, fica um círculo cinza */
+            /* Pega a foto do lindo direto do github */
             background-image: url('https://github.com/decolla.png'), linear-gradient(var(--card-bg), var(--card-bg));
             background-size: cover;
             box-shadow: var(--glow);
@@ -271,7 +271,7 @@
 <body>
 
 <nav>
-    <div class="logo">&lt;Pedro<span style="color:#2ea44f">/</span>Dev&gt;</div>
+    <div class="logo">&lt;decolla<span style="color:#2ea44f">/</span>Dev&gt;</div>
     <div class="nav-links">
         <a href="#about">Sobre</a>
         <a href="#education">Formação</a>
@@ -297,14 +297,18 @@
     <section id="about">
         <h2>Sobre Mim</h2>
         <p>
-            Olá! Sou um estudante de computação apaixonado por resolver problemas complexos através de código.
+            Olá! Sou um estudante de computação apaixonado por resolver problemas complexos por código.
             Atualmente, meu foco está na engenharia de software robusta, explorando o ecossistema de
             <strong style="color:#e6edf3">Engenharia de Dados e Backend</strong>.
         </p>
         <br>
         <p>
-            Na UFU, busco não apenas passar nas matérias, mas entender profundamente como os sistemas funcionam "por baixo do capô",
-            desde a manipulação de bits em C até arquiteturas distribuídas com Kafka.
+            Na UFU, busco entender profundamente como os sistemas funcionam "por baixo do capô",
+            desde a manipulação de bits em C até arquiteturas distribuídas.
+        </p>
+        <p>
+            Foco em sempre buscar conhecimento em diversas áreas, construindo uma base sólida e
+            dominando diversos aspectos da computação
         </p>
     </section>
 
@@ -312,15 +316,15 @@
         <h2>Jornada & Formação</h2>
 
         <div class="timeline-item">
-            <span class="timeline-date">2026 (Atual)</span>
+            <span class="timeline-date">2025 (Atual)</span>
             <h3 class="timeline-title">Estagiário em Desenvolvimento / Dados</h3>
-            <p>Aplicando conhecimentos em cenários reais, focando em ksqlDB, alarmes de sistema e infraestrutura de dados.</p>
+            <p>Aplicando conhecimento em cenários reais, focando em desenvolvimento .NET e infraestrutura de dados.</p>
         </div>
 
         <div class="timeline-item">
-            <span class="timeline-date">2022 - Presente</span>
+            <span class="timeline-date">2024 - Presente</span>
             <h3 class="timeline-title">Bacharelado em Ciência da Computação - UFU</h3>
-            <p>Monitoria em Programação Funcional. Foco em Algoritmos, Estruturas de Dados e Sistemas Distribuídos.</p>
+            <p>Foco em Algoritmos, Estruturas de Dados e Sistemas Distribuídos.</p>
         </div>
     </section>
 
